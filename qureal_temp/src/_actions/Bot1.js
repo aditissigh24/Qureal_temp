@@ -53,7 +53,15 @@ export function useQueryParams() {
     return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
-export function getImageFileURL(id) {
-    if (!id) return "";
-    return `https://botapi.qureal.com/image/${id}`;
+
+const BASE_URL = "https://api.qureal.com/";
+export const SiteSkelton = "https://via.placeholder.com/600x400?text=Loading..."; 
+export function getImageFileURL(filename) {
+  if (filename) {
+    return `${BASE_URL}passets/${filename}`;
+;
+  } else {
+    return SiteSkelton;
+  }
 }
+
